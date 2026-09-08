@@ -1,10 +1,15 @@
 FROM php:8.2-apache
 
-# Install MySQL extension for PHP
+# 1. Install system utilities and SSL certificates
+RUN apt-get update && apt-get install -y \
+    openssl \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# 2. Install MySQL extensions
 RUN docker-php-ext-install pdo pdo_mysql mysqli
 
-# Copy your website files into the container
+# 3. Copy files
 COPY . /var/www/html/
 
-# Expose port 80 for web traffic
 EXPOSE 80
