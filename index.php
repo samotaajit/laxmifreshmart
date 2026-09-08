@@ -1,6 +1,6 @@
 <?php
-
 declare(strict_types=1);
+ob_start();
 
 require_once 'config/database.php';
 require_once 'config/config.php';
