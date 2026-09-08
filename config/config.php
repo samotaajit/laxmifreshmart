@@ -7,7 +7,7 @@ define('SITE_NAME', 'Laxmi Fresh Mart');
 // WhatsApp business number in international format, without + or spaces.
 define('WHATSAPP_NUMBER', '919694877257');
 
-define('BASE_URL', 'https://laxmifreshmartjpr.netlify.app/');
+define('BASE_URL', 'https://laxmifreshmart.onrender.com/');
 
 define('ADMIN_URL', BASE_URL . 'admin/');
 
