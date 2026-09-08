@@ -2,10 +2,10 @@
 declare(strict_types=1);
 
 // 1. Fetch values safely from Render Environment Variables
-$host     = getenv('DB_HOST') ?: 'mysql-18d0be72-samota4209211-e4d4.f.aivencloud.com';
-$port     = getenv('DB_PORT') ?: '3306'; // Make sure to add DB_PORT to Render Env!
-$dbname   = getenv('DB_NAME') ?: 'laxmifreshmart';
-$username = getenv('DB_USER') ?: 'avnadmin';
+$host     = getenv('DB_HOST');
+$port     = getenv('DB_PORT'); // Make sure to add DB_PORT to Render Env!
+$dbname   = getenv('DB_NAME');
+$username = getenv('DB_USER');
 $password = getenv('DB_PASSWORD');
 
 try {
