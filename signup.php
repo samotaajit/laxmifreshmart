@@ -17,10 +17,6 @@ $name = '';
 $mobile = '';
 $email = '';
 $addressLine1 = '';
-$addressLine2 = '';
-$village = '';
-$area = '';
-$tehsil = '';
 $district = '';
 $state = '';
 $pincode = '';
@@ -34,10 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirmPassword = (string) ($_POST['confirm_password'] ?? '');
 
     $addressLine1 = trim($_POST['address_line1'] ?? '');
-    $addressLine2 = trim($_POST['address_line2'] ?? '');
-    $village = trim($_POST['village'] ?? '');
-    $area = trim($_POST['area'] ?? '');
-    $tehsil = trim($_POST['tehsil'] ?? '');
     $district = trim($_POST['district'] ?? '');
     $state = trim($_POST['state'] ?? '');
     $pincode = trim($_POST['pincode'] ?? '');
@@ -122,14 +114,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $pdo->prepare("
                 INSERT INTO user_addresses
                 (
-                    user_id, address_line1, address_line2, village, area,
-                    tehsil, district, state, pincode, landmark,
+                    user_id, address_line1, district, state, pincode, landmark,
                     is_primary, approval_status
                 )
                 VALUES
                 (
-                    :user_id, :address_line1, :address_line2, :village, :area,
-                    :tehsil, :district, :state, :pincode, :landmark,
+                    :user_id, :address_line1, :district, :state, :pincode, :landmark,
                     1, 'pending'
                 )
             ");
@@ -137,10 +127,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([
                 ':user_id' => $userId,
                 ':address_line1' => $addressLine1,
-                ':address_line2' => $addressLine2 !== '' ? $addressLine2 : null,
-                ':village' => $village !== '' ? $village : null,
-                ':area' => $area !== '' ? $area : null,
-                ':tehsil' => $tehsil !== '' ? $tehsil : null,
                 ':district' => $district !== '' ? $district : null,
                 ':state' => $state !== '' ? $state : null,
                 ':pincode' => $pincode,
@@ -151,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             setFlash(
                 'success',
-                'Your registration request has been submitted. Laxmi Fresh Mart will review your account and delivery area before you can place an order.'
+                'Your registration request has been submitted. Lakshmi Fresh Mart will review your account and delivery area before you can place an order.'
             );
 
             redirect(BASE_URL . 'login.php');
@@ -181,7 +167,7 @@ $activePage = '';
     <div class="container">
         <div class="account-card account-card-wide">
             <div class="account-card-head">
-                <h2>Join Laxmi Fresh Mart</h2>
+                <h2>Join Lakshmi Fresh Mart</h2>
                 <p>Your account and delivery address will be reviewed before ordering is enabled.</p>
             </div>
 
@@ -232,26 +218,6 @@ $activePage = '';
                         <input id="address_line1" name="address_line1" value="<?= e($addressLine1) ?>" required>
                     </div>
 
-                    <div class="form-group form-span-2">
-                        <label for="address_line2">Address Line 2</label>
-                        <input id="address_line2" name="address_line2" value="<?= e($addressLine2) ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="village">Village</label>
-                        <input id="village" name="village" value="<?= e($village) ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="area">Area</label>
-                        <input id="area" name="area" value="<?= e($area) ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tehsil">Tehsil</label>
-                        <input id="tehsil" name="tehsil" value="<?= e($tehsil) ?>">
-                    </div>
-
                     <div class="form-group">
                         <label for="district">District</label>
                         <input id="district" name="district" value="<?= e($district) ?>">
@@ -275,7 +241,7 @@ $activePage = '';
                 </div>
 
                 <div class="approval-note">
-                    Ordering is available only after your account and delivery address have been approved by Laxmi Fresh Mart.
+                    Ordering is available only after your account and delivery address have been approved by Lakshmi Fresh Mart.
                 </div>
 
                 <button class="btn-primary form-submit" type="submit">Submit Registration</button>
