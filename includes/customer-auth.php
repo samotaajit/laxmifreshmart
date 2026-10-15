@@ -97,14 +97,13 @@ function approvedPrimaryAddress(PDO $pdo, int $userId): ?array
     return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
 }
 
-function formatAddress(array $address): string
+function formatAddress(array $row): string
 {
     $parts = array_filter([
-        $address['address_line1'] ?? '',
-        $address['district'] ?? '',
-        $address['state'] ?? '',
-        $address['pincode'] ?? '',
-    ], static fn ($value) => trim((string)  $value) !== '');
-
+        $row['address_line1'] ?? '',
+        $row['district'] ?? '',
+        $row['state'] ?? '',
+        $row['pincode'] ?? '',
+    ]);
     return implode(', ', $parts);
 }

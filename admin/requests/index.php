@@ -381,7 +381,7 @@ unset($_SESSION['success'], $_SESSION['error']);
                                     </td>
 
                                     <td>
-                                        <?= e(date('d M Y', strtotime($row['created_at']))) ?>
+                                        <?= !empty($row['created_at']) ? e(date('d M Y', strtotime($row['created_at']))) : '—' ?>
                                     </td>
 
                                     <td class="text-end">
@@ -431,7 +431,7 @@ unset($_SESSION['success'], $_SESSION['error']);
                                     </td>
 
                                     <td>
-                                        <?= e(date('d M Y, h:i A', strtotime($row['created_at']))) ?>
+                                        <?= !empty($row['created_at']) ? e(date('d M Y', strtotime($row['created_at']))) : '—' ?>
                                     </td>
 
                                     <td class="text-end">
