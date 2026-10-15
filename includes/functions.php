@@ -58,3 +58,14 @@ function getFlash(): ?array
 
     return $flash;
 }
+
+function formatAddress(array $row): string
+{
+    $parts = array_filter([
+        $row['address_line1'] ?? '',
+        $row['district'] ?? '',
+        $row['state'] ?? '',
+        $row['pincode'] ?? '',
+    ]);
+    return implode(', ', $parts);
+}
