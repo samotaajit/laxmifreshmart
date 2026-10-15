@@ -6,16 +6,16 @@ error_reporting(E_ALL);
 ini_set('display_errors', '0');
 ini_set('display_startup_errors', '0');
 
-$host     = 'localhost';
-$port     = '443';
-$dbname   = 'laxmi_fresh_mart';
-$username = 'root';
-$password = '';
-// $host     = getenv('DB_HOST');
-// $port     = getenv('DB_PORT');
-// $dbname   = getenv('DB_NAME');
-// $username = getenv('DB_USER');
-// $password = getenv('DB_PASSWORD');
+// $host     = 'localhost';
+// $port     = '443';
+// $dbname   = 'laxmi_fresh_mart';
+// $username = 'root';
+// $password = '';
+$host     = getenv('DB_HOST');
+$port     = getenv('DB_PORT');
+$dbname   = getenv('DB_NAME');
+$username = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
 
 try {
     $dsn = "mysql:host={$host};port={$port};dbname={$dbname};charset=utf8mb4";
